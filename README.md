@@ -1,4 +1,6 @@
-# Compiuo - Image Compression Application
+# Compiuo
+
+#### Image Compression Application
 
 Compiuo is a sample image compression application built with **Express.js**. It allows users to upload and compress images, reducing their file size without sacrificing too much quality.
 
@@ -28,6 +30,12 @@ Compiuo is a sample image compression application built with **Express.js**. It 
 
 3. Open your browser and go to http://localhost:3000/v1 to use the app.
 
+4. Create _uploads_ folder inside project folder
+
+   ```bash
+   mkdir uploads
+   ```
+
 ## Usage
 
 To compress an image, simply upload it via the web interface.
@@ -37,10 +45,10 @@ The app will handle the compression and provide you with a download link to the 
 
 <p align="left">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=nodejs,expressjs" />
+    <img src="https://skillicons.dev/icons?i=nodejs,expressjs,prisma" />
   </a>
 </p>
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT** License.
