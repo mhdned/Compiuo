@@ -1,6 +1,7 @@
 # FOLDERs
 /node_modules
 /prisma/migrations
+/uploads
 
 # ENVs
 .env
