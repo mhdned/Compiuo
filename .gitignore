@@ -1,1 +1,5 @@
+# FOLDERs
 /node_modules
+
+# ENVs
+/environments/prod.env
