@@ -1,6 +1,21 @@
 {
   "name": "compiuo",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": {
+    "name": "Mehtiuo",
+    "email": "mahdi.nedaee4@gmail.com",
+    "url": "https://github.com/mhdned"
+  },
+  "description": "Compiuo is a sample image compression image application",
+  "license": "MIT",
+  "keywords": [
+    "image",
+    "compression",
+    "image-compressor",
+    "node.js",
+    "express.js",
+    "javascript"
+  ],
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
