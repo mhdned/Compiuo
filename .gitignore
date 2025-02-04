@@ -1,5 +1,7 @@
 # FOLDERs
 /node_modules
+/prisma/migrations
 
 # ENVs
+.env
 /environments/prod.env
