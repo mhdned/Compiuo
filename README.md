@@ -16,7 +16,7 @@ Compiuo is a sample image compression application built with **Express.js**. It 
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/compiuo.git
+   git clone https://github.com/mhdned/compiuo.git
    cd compiuo
    ```
 
@@ -37,7 +37,7 @@ The app will handle the compression and provide you with a download link to the 
 
 <p align="left">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=nodejs,expressjs,js" />
+    <img src="https://skillicons.dev/icons?i=nodejs,expressjs" />
   </a>
 </p>
 
