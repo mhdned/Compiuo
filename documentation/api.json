@@ -11,6 +11,7 @@
   "paths": {
     "/": {
       "get": {
+        "tags": ["ROOT"],
         "summary": "Welcome to COMPIUO",
         "description": "Returns a welcome message from the API.",
         "produces": ["text/html"],
