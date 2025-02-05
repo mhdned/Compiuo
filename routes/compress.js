@@ -26,7 +26,11 @@ const fileFilter = (req, file, cb) => {
 // configuration storage for upload file
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, process.env.UPLOAD_PATH);
+    const uploadDir = process.env.UPLOAD_PATH || '/app/uploads';
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    cb(null, uploadDir);
   },
   filename: function (req, file, cb) {
     const extname = path.extname(file.originalname).toLowerCase();
