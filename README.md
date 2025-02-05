@@ -41,11 +41,29 @@ Compiuo is a sample image compression application built with **Express.js**. It 
 To compress an image, simply upload it via the web interface.
 The app will handle the compression and provide you with a download link to the compressed image.
 
+## Running with Docker
+
+You can also run **Compiuo** inside a Docker container.
+
+> Note: This Docker setup and image are not fully completed and may require additional configuration.
+
+1. Build the Docker image:
+
+   ```bash
+   docker build -t compiuo:1.0.0 .
+   ```
+
+2. Run the container:
+
+   ```bash
+   docker run -i -p 8000:8000 --name compiuo-app compiuo:1.0.0
+   ```
+
 ## Technologies Used
 
 <p align="left">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=nodejs,expressjs,prisma" />
+    <img src="https://skillicons.dev/icons?i=nodejs,expressjs,prisma,docker" />
   </a>
 </p>
 
