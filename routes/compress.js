@@ -43,13 +43,16 @@ const router = Router();
 
 router.post('/', upload.single('image'), async (req, res) => {
   if (req.file) {
+    let { quality } = req.body;
+
     const newFile = await FileCRUD.create(req.file);
-    const compressedImagePath = SharpClass.compress(req.file, 60);
+    const compressedImage = await SharpClass.compress(req.file, quality);
+    const newCompressFile = await FileCRUD.create(compressedImage);
 
     return res.send({
       message: 'File stored and uploaded',
       file_id: newFile.id,
-      compressed_file_path: compressedImagePath,
+      compress_file_id: newCompressFile.id,
     });
   } else {
     return res.status(400).send('No file uploaded or invalid file type.');
