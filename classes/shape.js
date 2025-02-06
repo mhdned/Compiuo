@@ -17,6 +17,7 @@ class SharpClass {
 
     compressedImage.filename = `compress${file.filename}`;
     compressedImage.originalname = `compress${file.filename}`;
+    compressedImage.fullpath = compressImagePath;
     compressedImage.destination = compressImagePath
       .replace(`${process.env.MAIN_PATH}`, '')
       .replace(`compress${file.filename}`, '');

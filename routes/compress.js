@@ -54,6 +54,11 @@ router.post('/', upload.single('image'), qualityValidationChain(), async (req, r
     const compressedImage = await SharpClass.compress(req.file, quality);
     const newCompressFile = await FileCRUD.create(compressedImage);
 
+    if (false) {
+      res.setHeader('content-type', 'image/jpeg');
+      return fs.createReadStream(compressedImage.fullpath).pipe(res);
+    }
+
     return res.send({
       message: 'File stored and uploaded',
       file_id: newFile.id,
