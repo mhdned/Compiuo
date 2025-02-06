@@ -18,8 +18,8 @@
   ],
   "private": true,
   "scripts": {
-    "start:prod": "node ./bin/www",
-    "start:dev": "nodemon ./bin/www"
+    "start:prod": "node ./bin/www & ENV=prod",
+    "start:dev": "nodemon ./bin/www & ENV=dev"
   },
   "dependencies": {
     "@prisma/client": "^6.3.1",

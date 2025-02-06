@@ -1,14 +1,12 @@
 // require packages, dependencies and libraries
 const fs = require('fs');
 const path = require('path');
-const sharp = require('sharp');
 const multer = require('multer');
 const { Router } = require('express');
 const { v4: uuidv4 } = require('uuid');
-const { PrismaClient } = require('@prisma/client');
 
-// create instance of prisma client
-const prisma = new PrismaClient();
+const { FileCRUD } = require('./../models/file');
+const { SharpClass } = require('./../classes/shape');
 
 // file filter settings
 const fileFilter = (req, file, cb) => {
@@ -39,48 +37,23 @@ const storage = multer.diskStorage({
   },
 });
 
-// configuration multer package
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
-// create instance of Routing class
 const router = Router();
 
-// compression route
-// image (png) -> compress 50%, static data -> reposne (end process)
 router.post('/', upload.single('image'), async (req, res) => {
-  // validation file and data
-  // upload image
   if (req.file) {
-    const newFile = await prisma.file.create({
-      data: {
-        name: req.file.filename,
-        extension: path.extname(req.file.originalname),
-        location: req.file.destination,
-      },
-    });
-    const orginalImagePath = path.join(
-      process.env.MAIN_PATH,
-      req.file.destination,
-      req.file.filename
-    );
-    const compressImagePath = path.join(
-      process.env.MAIN_PATH,
-      req.file.destination,
-      `compress${req.file.filename}`
-    );
-    const compressedImage = await sharp(orginalImagePath)
-      .jpeg({ quality: 50 })
-      .toFile(compressImagePath);
+    const newFile = await FileCRUD.create(req.file);
+    const compressedImagePath = SharpClass.compress(req.file, 60);
+
     return res.send({
       message: 'File stored and uploaded',
       file_id: newFile.id,
+      compressed_file_path: compressedImagePath,
     });
   } else {
     return res.status(400).send('No file uploaded or invalid file type.');
   }
-  // store to database file information
-  // process to compress image
-  // send output to client
 });
 
 module.exports = router;
