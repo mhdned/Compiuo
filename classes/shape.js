@@ -2,7 +2,7 @@ const path = require('path');
 const sharp = require('sharp');
 
 class SharpClass {
-  static async compress(file, quality = 50) {
+  static async compress(file, quality) {
     quality = Number(quality);
 
     const orginalImagePath = path.join(process.env.MAIN_PATH, file.destination, file.filename);

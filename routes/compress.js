@@ -4,9 +4,11 @@ const path = require('path');
 const multer = require('multer');
 const { Router } = require('express');
 const { v4: uuidv4 } = require('uuid');
+const { validationResult } = require('express-validator');
 
 const { FileCRUD } = require('./../models/file');
 const { SharpClass } = require('./../classes/shape');
+const { qualityValidationChain } = require('./../validations/compress');
 
 // file filter settings
 const fileFilter = (req, file, cb) => {
@@ -41,7 +43,10 @@ const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 const router = Router();
 
-router.post('/', upload.single('image'), async (req, res) => {
+router.post('/', upload.single('image'), qualityValidationChain(), async (req, res) => {
+  const result = validationResult(req);
+  if (!result.isEmpty()) return res.status(412).send({ errors: result.array() });
+
   if (req.file) {
     let { quality } = req.body;
 
