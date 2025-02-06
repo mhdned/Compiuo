@@ -16,8 +16,8 @@ class ConfigENV {
 
     // configuration environment variable
     process.env.MAIN_PATH = path.dirname(__dirname);
-    console.log(process.env.MAIN_PATH);
-    console.log(process.env.UPLOAD_PATH);
+    // console.log(process.env.MAIN_PATH);
+    // console.log(process.env.UPLOAD_PATH);
   }
 
   configuration(environment) {
