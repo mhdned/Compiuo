@@ -27,6 +27,7 @@
     "debug": "~2.6.9",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "express-validator": "^7.2.1",
     "http-errors": "~1.6.3",
     "jade": "^0.31.2",
     "morgan": "~1.9.1",
