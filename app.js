@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const logger = require('morgan');
 const express = require('express');
-const dotenv = require('dotenv');
 const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
 const swaggerUi = require('swagger-ui-express');
@@ -11,10 +10,6 @@ const swaggerUi = require('swagger-ui-express');
 let indexRouter = require('./routes/index');
 
 let app = express();
-
-// configuration environment variable
-dotenv.config();
-process.env.MAIN_PATH = path.resolve(__dirname);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
