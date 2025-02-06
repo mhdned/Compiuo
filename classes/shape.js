@@ -3,15 +3,23 @@ const sharp = require('sharp');
 
 class SharpClass {
   static async compress(file, quality = 50) {
+    quality = Number(quality);
+
     const orginalImagePath = path.join(process.env.MAIN_PATH, file.destination, file.filename);
     const compressImagePath = path.join(
       process.env.MAIN_PATH,
       file.destination,
       `compress${file.filename}`
     );
-    const compressedImage = await sharp(orginalImagePath)
+    let compressedImage = await sharp(orginalImagePath)
       .jpeg({ quality: quality })
       .toFile(compressImagePath);
+
+    compressedImage.filename = `compress${file.filename}`;
+    compressedImage.originalname = `compress${file.filename}`;
+    compressedImage.destination = compressImagePath
+      .replace(`${process.env.MAIN_PATH}`, '')
+      .replace(`compress${file.filename}`, '');
 
     return compressedImage;
   }
